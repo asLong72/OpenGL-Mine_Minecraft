@@ -146,20 +146,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game_Objects.cpp" />
     <ClCompile Include="include\glad\glad.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Shaders.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="my_hfile\Chunk.cpp" />
+    <ClCompile Include="my_hfile\CubeModel.cpp" />
+    <ClCompile Include="my_hfile\Shader.cpp" />
+    <ClCompile Include="my_hfile\Camera.cpp" />
+    <ClCompile Include="my_hfile\TextureBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\glad\glad.h" />
-    <ClInclude Include="my_hfile\callbacks.h" />
+    <ClInclude Include="my_hfile\Chunk.h" />
+    <ClInclude Include="my_hfile\CubeModel.h" />
+    <ClInclude Include="my_hfile\Shader.h" />
     <ClInclude Include="my_hfile\Camera.h" />
-    <ClInclude Include="my_hfile\Game_Objects.h" />
-    <ClInclude Include="my_hfile\Noise.h" />
-    <ClInclude Include="my_hfile\Shaders.h" />
-    <ClInclude Include="my_hfile\World.h" />
+    <ClInclude Include="my_hfile\TextureBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\CubeShader\CubeFragmentShader.glsl" />
+    <None Include="Shaders\CubeShader\CubeVertexShader.glsl" />
+    <None Include="Shaders\UIShader\UIFragmentShader.glsl" />
+    <None Include="Shaders\UIShader\UIVertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

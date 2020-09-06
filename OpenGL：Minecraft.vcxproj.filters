@@ -21,13 +21,19 @@
     <ClCompile Include="include\glad\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders.cpp">
+    <ClCompile Include="my_hfile\Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Objects.cpp">
+    <ClCompile Include="my_hfile\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="my_hfile\Chunk.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="my_hfile\CubeModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="my_hfile\TextureBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,23 +41,26 @@
     <ClInclude Include="include\glad\glad.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="my_hfile\World.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="my_hfile\Shaders.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="my_hfile\Game_Objects.h">
+    <ClInclude Include="my_hfile\Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="my_hfile\Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="my_hfile\Noise.h">
+    <ClInclude Include="my_hfile\Chunk.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="my_hfile\callbacks.h">
+    <ClInclude Include="my_hfile\CubeModel.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="my_hfile\TextureBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\CubeShader\CubeFragmentShader.glsl" />
+    <None Include="Shaders\CubeShader\CubeVertexShader.glsl" />
+    <None Include="Shaders\UIShader\UIVertexShader.glsl" />
+    <None Include="Shaders\UIShader\UIFragmentShader.glsl" />
   </ItemGroup>
 </Project>

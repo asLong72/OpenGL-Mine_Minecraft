@@ -1,10 +1,10 @@
 #pragma once
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef __CAMERA_H__
+#define __CAMERA_H__
 
 #include "../include/glad/glad.h"
-#include "../include/glm/glm.hpp"
-#include "../include/glm/gtc/matrix_transform.hpp"
+#include "../glm/glm.hpp"
+#include "../glm/gtc/matrix_transform.hpp"
 
 //#include <vector>
 
@@ -14,7 +14,7 @@ enum Camera_Movement {
 	LEFT,
 	RIGHT,
 	SPACE,
-	SHIFT
+	SHIFT,
 };
 
 const float YAW = 0.0f;
@@ -26,7 +26,6 @@ const float ZOOM = 45.0f;
 
 class Camera {
 public:
-
 	glm::vec3 Position;
 	glm::vec3 Front;
 	glm::vec3 Up;
@@ -48,7 +47,6 @@ public:
 		Pitch = pitch;
 		updateCameraVectors();
 	}
-
 	//初始化
 	Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM) {
 		Position = glm::vec3(posX, posY, posZ);
@@ -59,83 +57,20 @@ public:
 	}
 
 	//获得观察矩阵
-	glm::mat4 GetViewMatrix() {
+	inline glm::mat4 GetViewMatrix() {
 		return glm::lookAt(Position, Position + Front, Up);
 	}
-
 	//按键处理
-	void ProcessKeyboard(Camera_Movement direction, float deltaTime) {
-		float velocity = MovementSpeed * deltaTime;
-		if (direction == FORWARD)
-		{
-			Right = glm::cross(Front, Up);
-			Position -= glm::cross(Right, WorldUp) * velocity;
-		}
-		if (direction == BACKWARD)
-		{
-			Right = glm::cross(Front, Up);
-			Position += glm::cross(Right, WorldUp) * velocity;
-		}
-		if (direction == LEFT)
-		{
-			Right = glm::cross(Front, Up);
-			Position -= Right * velocity;
-		}
-		if (direction == RIGHT)
-		{
-			Right = glm::cross(Front, Up);
-			Position += Right * velocity;
-		}
-		if (direction == SHIFT)
-		{
-
-			Position -= WorldUp * velocity;
-		}
-		if (direction == SPACE)
-		{
-
-			Position += WorldUp * velocity;
-		}
-	}
-
+	void ProcessKeyboard(Camera_Movement , float );
 	//鼠标输入处理
-	void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true) {
-		xoffset *= MouseSensitivity;
-		yoffset *= MouseSensitivity;
-
-		Yaw += xoffset;
-		Pitch += yoffset;
-
-		if (constrainPitch) {
-			if (Pitch > 89.0f)
-				Pitch = 89.0f;
-			if (Pitch < -89.0f)
-				Pitch = -89.0f;
-		}
-
-		updateCameraVectors();
-	}
-
+	void ProcessMouseMovement(float , float , GLboolean );
 	//变焦处理
-	void ProcessMouseScroll(float yoffset) {
-		if (Zoom >= 1.0f && Zoom <= 45.0f)
-			Zoom -= yoffset;
-		if (Zoom <= 1.0f)
-			Zoom = 1.0f;
-		if (Zoom >= 45.0f)
-			Zoom = 45.0f;
-	}
+	void ProcessMouseScroll(float );
 
 private:
 	//更新摄像机向量
-	void updateCameraVectors() {
-		glm::vec3 front;
-		front.x = -sin(glm::radians(Yaw)); //cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-		front.y = sin(glm::radians(Pitch));
-		front.z = -cos(glm::radians(Pitch)) * cos(glm::radians(Yaw));// sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-		Front = glm::normalize(front);
-		Right = glm::normalize(glm::cross(Front, WorldUp));
-		Up = glm::normalize(glm::cross(Right, Front));
-	}
+	void updateCameraVectors();
 };
-#endif
+
+
+#endif // !__CAMERA_H__
