@@ -153,6 +153,7 @@
     <ClCompile Include="my_hfile\Shader.cpp" />
     <ClCompile Include="my_hfile\Camera.cpp" />
     <ClCompile Include="my_hfile\TextureBuffer.cpp" />
+    <ClCompile Include="my_hfile\Noise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\glad\glad.h" />
@@ -161,12 +162,17 @@
     <ClInclude Include="my_hfile\Shader.h" />
     <ClInclude Include="my_hfile\Camera.h" />
     <ClInclude Include="my_hfile\TextureBuffer.h" />
+    <ClInclude Include="my_hfile\Noise.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\CubeShader\CubeFragmentShader.glsl" />
-    <None Include="Shaders\CubeShader\CubeVertexShader.glsl" />
-    <None Include="Shaders\UIShader\UIFragmentShader.glsl" />
-    <None Include="Shaders\UIShader\UIVertexShader.glsl" />
+    <None Include="Shaders\CubeShader\CubeFS.glsl" />
+    <None Include="Shaders\CubeShader\CubeVS.glsl" />
+    <None Include="Shaders\UIShader\UIFS.glsl" />
+    <None Include="Shaders\UIShader\UIVS.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\CubeShader\CubeInstancedFS.glsl" />
+    <Text Include="Shaders\CubeShader\CubeInstancedVS.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

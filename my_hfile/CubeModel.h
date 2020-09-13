@@ -6,7 +6,7 @@
 #include <vector>
 #include "Shader.h"
 
-class CubeModel :public Shader {
+class CubeModel {
 public:
 	CubeModel();
 	CubeModel(std::string, std::string);
@@ -25,10 +25,12 @@ public:
 	inline unsigned getEBO() { return EBO; };
 	~CubeModel() { };
 
+
+	static Shader cube_shader;
 protected:
+
 	unsigned VAO;
 	unsigned VBO;
 	unsigned EBO;
 };
-
 #endif // !CUBEMODEL_H

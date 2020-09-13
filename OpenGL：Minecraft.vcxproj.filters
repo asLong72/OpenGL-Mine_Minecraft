@@ -36,6 +36,9 @@
     <ClCompile Include="my_hfile\TextureBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="my_hfile\Noise.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\glad\glad.h">
@@ -56,11 +59,18 @@
     <ClInclude Include="my_hfile\TextureBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="my_hfile\Noise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\CubeShader\CubeFragmentShader.glsl" />
-    <None Include="Shaders\CubeShader\CubeVertexShader.glsl" />
-    <None Include="Shaders\UIShader\UIVertexShader.glsl" />
-    <None Include="Shaders\UIShader\UIFragmentShader.glsl" />
+    <None Include="Shaders\CubeShader\CubeFS.glsl" />
+    <None Include="Shaders\CubeShader\CubeVS.glsl" />
+    <None Include="Shaders\UIShader\UIFS.glsl" />
+    <None Include="Shaders\UIShader\UIVS.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\CubeShader\CubeInstancedFS.glsl" />
+    <Text Include="Shaders\CubeShader\CubeInstancedVS.glsl" />
   </ItemGroup>
 </Project>

@@ -7,13 +7,17 @@
 Blocks::Blocks() {
 	AllData = NULL;
 	inNeedData = NULL;
-	intancedVBO = 0;
+	PosintancedVBO = 0;
+	TexintancedVBO = 0;
+	intance_num = 0;
 	visualable = false;
 }
 Blocks::Blocks(std::string v_path, std::string f_path) :CubeModel(v_path, f_path) {
 	AllData = NULL;
 	inNeedData = NULL;
-	intancedVBO = 0;
+	PosintancedVBO = 0;
+	TexintancedVBO = 0;
+	intance_num = 0;
 	visualable = false;
 }
 void Blocks::Init(unsigned char* data_in) {
@@ -35,9 +39,9 @@ void Blocks::inNeedData_Update() {
 	};
 	while (x < 16)
 	{
-		while (y < 16)
+		while (z < 16)
 		{
-			while (z < 16)
+			while (y < 16)
 			{
 				now.up = 0;
 				now.down = 0;
@@ -45,7 +49,7 @@ void Blocks::inNeedData_Update() {
 				now.left = 0;
 				now.front = 0;
 				now.behind = 0;
-				pos = 16 * 16 * x + 16 * y + z;
+				pos = 16 * 16 * x + 16 * z + y;
 
 				if (x != 0)
 				{
@@ -83,40 +87,44 @@ void Blocks::inNeedData_Update() {
 					inNeedData[pos] = 0;
 				}
 
-				z++;
+				y++;
 			}
-			y++, z = 0;
+			z++, y = 0;
 		}
-		x++, y = 0;
+		x++, z = 0;
 	}
 }
+//각겔각것각것각것
 void Blocks::setIntancedVBO() {
 	short x = 0, y = 0, z = 0;
 	int pos = 0;
 	glm::mat4 need;
 	std::vector<glm::mat4> intancedmv;
+	std::vector<GLfloat> intancedtex;
 	while (x < 16)
 	{
-		while (y < 16)
+		while (z < 16)
 		{
-			while (z < 16)
+			while (y < 16)
 			{
-				pos = 16 * 16 * x + 16 * y + z;
+				pos = 16 * 16 * x + 16 * z + y;
 				if (inNeedData[pos] != 0)
 				{
 					intancedmv.push_back(glm::translate(glm::mat4(), glm::vec3(x, y, z)));
+					intancedtex.push_back((float)(inNeedData[pos] - 1));
+					intance_num++;
 				}
-				z++;
+				y++;
 			}
-			y++, z = 0;
+			z++, y = 0;
 		}
-		x++, y = 0;
+		x++, z = 0;
 	}
-	intance_num = (GLsizei)intancedmv.size();
 	std::cerr << intance_num << std::endl;
+	std::cerr << intancedtex.size() << std::endl;
 	glBindVertexArray(VAO);
-	glGenBuffers(1, &intancedVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, intancedVBO);
+	glGenBuffers(1, &PosintancedVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, PosintancedVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4) * intance_num, intancedmv.data(), GL_STATIC_DRAW);
 
 	glVertexAttribPointer(2, glm::vec4().length(), GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)0);
@@ -134,6 +142,14 @@ void Blocks::setIntancedVBO() {
 	glVertexAttribPointer(5, glm::vec4().length(), GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
 	glEnableVertexAttribArray(5);
 	glVertexAttribDivisor(5, 1);
+
+	glGenBuffers(1, &TexintancedVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, TexintancedVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * intance_num, intancedtex.data(), GL_STATIC_DRAW);
+
+	glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat), (void*)0);
+	glEnableVertexAttribArray(6);
+	glVertexAttribDivisor(6, 1);
 
 	glBindVertexArray(NULL);
 }

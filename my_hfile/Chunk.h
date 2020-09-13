@@ -27,7 +27,8 @@ public:
 protected:
 	unsigned char* AllData;
 	unsigned char* inNeedData;
-	unsigned intancedVBO;
+	unsigned TexintancedVBO;
+	unsigned PosintancedVBO;
 	GLsizei intance_num;
 	bool visualable;
 };
@@ -36,10 +37,11 @@ class Chunks
 {
 public:
 	Chunks() { };
+	Chunks(std::string, std::string);
 	~Chunks() { };
 
 protected:
-	//Blocks blockArray[16];
+	Blocks blockArray[16];
 
 };
 

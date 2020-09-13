@@ -32,6 +32,20 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constr
 
 	updateCameraVectors();
 }
+void Camera::ProcessMouseMovement(float xoffset, float yoffset) {
+	xoffset *= MouseSensitivity;
+	yoffset *= MouseSensitivity;
+
+	Yaw += xoffset;
+	Pitch += yoffset;
+	if (Pitch > 89.0f)
+		Pitch = 89.0f;
+	if (Pitch < -89.0f)
+		Pitch = -89.0f;
+
+	updateCameraVectors();
+}
+
 void Camera::ProcessMouseScroll(float yoffset) {
 	if (Zoom >= 1.0f && Zoom <= 45.0f)
 		Zoom -= yoffset;

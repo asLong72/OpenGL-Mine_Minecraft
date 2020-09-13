@@ -1,12 +1,17 @@
 #include "CubeModel.h"
 
+Shader CubeModel::cube_shader = Shader();
 CubeModel::CubeModel() {
-	progID = 0;
 	VAO = 0;
 	VBO = 0;
 	EBO = 0;
 };
-CubeModel::CubeModel(std::string vertexShader_path, std::string fragmentShader_path) :Shader(vertexShader_path, fragmentShader_path) {
+CubeModel::CubeModel(std::string vertexShader_path, std::string fragmentShader_path) {
+	if (cube_shader.getProgID() == 0)
+	{
+		cube_shader = Shader(vertexShader_path, fragmentShader_path);
+	}
+
 	float vertex[]
 	{
 		//ÕýÃæ

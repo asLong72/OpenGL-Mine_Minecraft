@@ -61,11 +61,13 @@ public:
 		return glm::lookAt(Position, Position + Front, Up);
 	}
 	//按键处理
-	void ProcessKeyboard(Camera_Movement , float );
+	void ProcessKeyboard(Camera_Movement, float);
 	//鼠标输入处理
-	void ProcessMouseMovement(float , float , GLboolean );
+	void ProcessMouseMovement(float, float, GLboolean);
+	void ProcessMouseMovement(float, float);
+
 	//变焦处理
-	void ProcessMouseScroll(float );
+	void ProcessMouseScroll(float);
 
 private:
 	//更新摄像机向量
